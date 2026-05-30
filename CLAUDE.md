@@ -133,6 +133,21 @@ Always use these — never raw ad-hoc hex.
 - Dataclasses for data shapes. Type hints throughout. Round money to 2 dp, percentages to 2 dp.
 - yfinance can fail / return partial data — wrap fetches in try/except and surface a friendly `st.error`, as `get_stock_quote` already does.
 
+## README maintenance (required)
+
+**Keep [README.md](README.md) in sync with every change.** After any change that affects user-facing behavior, features, dependencies, architecture, run steps, or roadmap status, update README.md in the **same** edit batch — before considering the task done.
+
+Specifically:
+- New / changed feature → update the **Features** list.
+- Roadmap item shipped → check its box in **Roadmap** (`[ ]` → `[x]`) and move it to **Features**.
+- New dependency → update **Tech stack** + **Quick start**.
+- New module / moved file → update **Architecture** + **Project layout**.
+- Changed run command → update **Quick start**.
+
+Treat a code change with a stale README as incomplete. Keep the tone/format that's already there (badges, emoji section headers, dark-terminal voice).
+
+> Note: this is an instruction Claude follows, not a literal automatic trigger. For true automation independent of the model, add a Stop/PostToolUse hook in `.claude/settings.json` (e.g. via the `update-config` skill) that flags README drift after edits.
+
 ## Gotchas
 
 - yfinance `.info` is slow and occasionally rate-limited / missing fields — that's why there's a fallback chain. Cache aggressively when adding option-chain fetches.
